@@ -1,0 +1,130 @@
+.footer-custom {
+background: linear-gradient(to right, #264653, #2a9d8f);
+color: #ffffff;
+padding: 20px 10px;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+font-family: 'Segoe UI', sans-serif;
+font-size: 17px;
+}
+
+.footer-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 30px;
+align-items: flex-start;
+text-align: center;
+}
+
+.footer-brand {
+animation: float 6s ease-in-out infinite;
+}
+
+.footer-brand h2 {
+font-size: 26px;
+color: #f4e9cd;
+margin: 10px 0 5px;
+}
+
+.footer-brand p {
+font-size: 15px;
+color: #e0f2f1;
+}
+
+.brand-logo {
+width: 60px;
+border-radius: 50%;
+}
+
+.footer-links h4,
+.footer-contact h4,
+.footer-feedback h4 {
+font-size: 20px;
+color: #f4e9cd;
+margin-bottom: 10px;
+}
+
+.footer-links ul {
+list-style: none;
+padding: 0;
+}
+
+.footer-links ul li {
+margin: 6px 0;
+}
+
+.footer-links ul li a {
+color: #e0f2f1;
+text-decoration: none;
+transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+color: #ff7300;
+text-decoration: underline;
+}
+
+.footer-contact p {
+font-size: 16px;
+margin: 6px 0;
+color: #e0f2f1;
+}
+
+.footer-feedback textarea {
+width: 100%;
+padding: 10px;
+border-radius: 8px;
+border: none;
+resize: none;
+font-size: 16px;
+margin-bottom: 10px;
+}
+
+.footer-feedback button {
+padding: 8px 16px;
+border: none;
+border-radius: 20px;
+background-color: #f4a261;
+color: white;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s, transform 0.3s;
+}
+
+.footer-feedback button:hover {
+background-color: #e76f51;
+transform: scale(1.05);
+}
+
+.footer-social a {
+margin: 0 10px;
+font-size: 1.8rem;
+color: #f4e9cd;
+transition: transform 0.3s, color 0.3s;
+}
+
+.footer-social a:hover {
+transform: scale(1.6);
+color: #fd7200;
+}
+
+.footer-note {
+margin-top: 20px;
+font-size: 14px;
+color: #f4e9cd;
+}
+
+@keyframes float {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-6px); }
+}
+
+@media (max-width: 768px) {
+.footer-grid {
+  gap: 20px;
+  text-align: center;
+}
+.footer-note {
+  margin-top: 15px;
+}
+}

@@ -1,0 +1,81 @@
+<app-progress-bar
+  [currentStep]="5"
+  [steps]="['Personal Info','Incident Details','FNOL','Property Details','Damage Assessment','Witness Info','Insurance Details','Additional Info','Banking Info','Form Submit']">
+</app-progress-bar>
+
+<div class="fnol-details-container">
+  <div class="card">
+    <h2><i class="bi bi-exclamation-triangle"></i> Damage Assessment</h2>
+
+    <form (ngSubmit)="onSubmit()" #damageAssessmentForm="ngForm" name="damageAssessmentForm">
+      <div class="form-group">
+        <label for="typesOfDamage"><i class="bi bi-tools"></i> Types of Damage</label>
+        <div class="checkbox-group">
+          <div
+            class="checkbox-item"
+            *ngFor="let damage of [
+              { label: 'Appliances and Electronics (e.g., refrigerators, TVs, computers)', value: 'appliances-electronics' },
+              { label: 'HVAC Systems (Heating, Ventilation, and Air Conditioning)', value: 'hvac-systems' },
+              { label: 'Plumbing Systems (Pipes, water heaters, etc.)', value: 'plumbing-systems' },
+              { label: 'Flooring (Carpets, tiles, hardwood, etc.)', value: 'flooring' },
+              { label: 'Walls and Ceilings (Drywall, plaster, paint damage)', value: 'walls-ceilings' },
+              { label: 'Roof Damage (Leaks, structural issues)', value: 'roof-damage' },
+              { label: 'Foundation Damage (Cracks, water seepage)', value: 'foundation-damage' },
+              { label: 'Vehicles (If covered under the policy)', value: 'vehicles' },
+              { label: 'Personal Belongings (Clothing, books, jewelry, etc.)', value: 'personal-belongings' },
+              { label: 'Outdoor Structures (Sheds, fences, decks, etc.)', value: 'outdoor-structures' },
+              { label: 'Landscaping (Trees, plants, lawns, etc.)', value: 'landscaping' },
+              { label: 'Basement Damage (Flooded basements, sump pump failure)', value: 'basement-damage' },
+              { label: 'Mold and Mildew (Resulting from water damage)', value: 'mold-mildew' },
+              { label: 'Septic Systems (Overflow or damage)', value: 'septic-systems' },
+              { label: 'Swimming Pools and Hot Tubs (If applicable)', value: 'swimming-pools-hot-tubs' },
+              { label: 'Business Equipment (For commercial properties)', value: 'business-equipment' }
+            ]"
+          >
+            <span>{{ damage.label }}</span>
+            <input
+  type="checkbox"
+  [value]="damage.value"
+  (change)="onCheckboxChange($event, damage.value)">
+          </div>
+          <div class="warning" style="color: red;"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="repairCost"><i class="bi bi-currency-dollar"></i> Estimated Cost of Repair</label>
+        <input
+          type="number"
+          id="repairCost"
+          placeholder="Enter estimated cost"
+          min="0"
+          [(ngModel)]="repairCost"
+          name="repairCost"
+          (input)="checkFormValidity()">
+        <div class="warning" style="color: red;"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="damagePhotos"><i class="bi bi-camera"></i> Attach Photos/Files</label>
+        <input
+          type="file"
+          id="damagePhotos"
+          multiple
+          accept="image/*,video/*"
+          (change)="onFileSelected($event)">
+        <div class="file-names" *ngIf="selectedFiles.length > 0">
+          <p>Selected Files:</p>
+          <ul>
+            <li *ngFor="let file of selectedFiles">{{ file.name }}</li>
+          </ul>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary submit-button">
+        <i class="bi bi-box-arrow-in-right"></i> Submit
+      </button>
+    </form>
+  </div>
+</div>

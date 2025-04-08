@@ -1,0 +1,159 @@
+/* Font import */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  background: #f0f2f5;
+}
+
+.table-wrapper {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+  animation: slideInUp 0.7s ease;
+}
+
+.table-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.claim-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.claim-table thead {
+  background-color: #f7f9fb;
+}
+
+.claim-table th,
+.claim-table td {
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 15px;
+  color: #333;
+}
+
+.claim-table th {
+  font-weight: 500;
+  color: #555;
+  letter-spacing: 0.5px;
+}
+
+.claim-table tbody tr {
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(0);
+}
+
+.claim-table tbody tr:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Animated row entry */
+.animated-row {
+  animation: fadeSlideIn 0.6s ease-in-out;
+}
+
+/* Status text color */
+.status-approved {
+  color: #2ecc71;
+  font-weight: 600;
+}
+
+.status-pending {
+  color: #f39c12;
+  font-weight: 600;
+}
+
+.status-rejected {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+/* Keyframes */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.status-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white;
+    transition: transform 0.2s ease;
+  }
+  
+  .status-badge.approved {
+    background-color: #2ecc71;
+  }
+  
+  .status-badge.pending {
+    background-color: #f1c40f;
+    color: #333;
+  }
+  
+  .status-badge.rejected {
+    background-color: #e74c3c;
+  }
+
+  .centered-title {
+    text-align: center;
+    margin: 30px auto;
+    font-size: 26px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  /* Force parent centering */
+  .container h2.centered-title {
+    justify-content: center;
+  }
+  .container {
+    text-align: center;
+  }
+  .claim-table {
+    margin-bottom: 40px; /* Adjust as needed */
+  }
+  .container {
+    margin-bottom: 40px;
+  }

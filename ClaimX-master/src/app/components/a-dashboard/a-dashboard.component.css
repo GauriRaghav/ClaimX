@@ -1,0 +1,80 @@
+.dashboard {
+    padding: 20px;
+  }
+  
+  .search-filter-sort {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .claim-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .card {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .claim-list-card {
+    background-color: white;
+    color: #333;
+  }
+  
+  .accepted-claims-card {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .rejected-claims-card {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .pending-claims-card {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .card-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 1em;
+  }
+  
+  /* Keyframes for Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(20px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }

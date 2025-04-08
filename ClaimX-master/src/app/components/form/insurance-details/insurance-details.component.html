@@ -1,0 +1,48 @@
+<app-progress-bar
+  [currentStep]="7"
+  [steps]="['Personal Info','Incident Details','FNOL','Property Details','Damage Assessment','Witness Info','Insurance Details','Additional Info','Banking Info','Form Submit']">
+</app-progress-bar>
+
+<div class="insurance-details-container">
+  <div class="card">
+    <h2><i class="bi bi-shield-fill"></i> Insurance Details</h2>
+    <form (ngSubmit)="onSubmit()" #insuranceDetailsForm="ngForm">
+      <div class="form-group">
+        <label for="policyStartDate"><i class="bi bi-calendar-event"></i> Policy Start Date:</label>
+        <input type="date" id="policyStartDate" [(ngModel)]="policyStartDate" name="policyStartDate" required (input)="checkFormValidity()">
+        <div *ngIf="validationMessages['policyStartDate']" class="error">
+          <i class="bi bi-exclamation-circle"></i> {{ validationMessages['policyStartDate'] }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="policyEndDate"><i class="bi bi-calendar-event"></i> Policy End Date:</label>
+        <input type="date" id="policyEndDate" [(ngModel)]="policyEndDate" name="policyEndDate" required (input)="checkFormValidity()">
+        <div *ngIf="validationMessages['policyEndDate']" class="error">
+          <i class="bi bi-exclamation-circle"></i> {{ validationMessages['policyEndDate'] }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label><i class="bi bi-question-circle"></i> Are There Other Insurance Policies Covering the Loss?</label>
+        <div class="form-check">
+          <input type="radio" id="otherInsuranceYes" [(ngModel)]="otherInsurance" name="otherInsurance" value="yes" required (change)="checkFormValidity()">
+          <label for="otherInsuranceYes">Yes</label>
+        </div>
+        <div class="form-check">
+          <input type="radio" id="otherInsuranceNo" [(ngModel)]="otherInsurance" name="otherInsurance" value="no" required (change)="checkFormValidity()">
+          <label for="otherInsuranceNo">No</label>
+        </div>
+        <div *ngIf="validationMessages['otherInsurance']" class="error">
+          <i class="bi bi-exclamation-circle"></i> {{ validationMessages['otherInsurance'] }}
+        </div>
+      </div>
+      <div class="form-group" *ngIf="otherInsurance === 'yes'">
+        <label for="otherInsuranceDetails"><i class="bi bi-info-circle"></i> If Yes, provide details:</label>
+        <textarea id="otherInsuranceDetails" [(ngModel)]="otherInsuranceDetails" name="otherInsuranceDetails" required (input)="checkFormValidity()"></textarea>
+        <div *ngIf="validationMessages['otherInsuranceDetails']" class="error">
+          <i class="bi bi-exclamation-circle"></i> {{ validationMessages['otherInsuranceDetails'] }}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary submit-button" [disabled]="!isFormValid"><i class="bi bi-box-arrow-in-right"></i> Submit</button>
+    </form>
+  </div>
+</div>

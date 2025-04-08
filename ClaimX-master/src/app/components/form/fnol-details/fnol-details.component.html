@@ -1,0 +1,44 @@
+<app-progress-bar 
+  [currentStep]="3" 
+  [steps]="['Personal Info','Incident Details','FNOL','Property Details','Damage Assessment','Witness Info','Insurance Details','Additional Info','Banking Info','Form Submit']">
+</app-progress-bar>
+
+
+<div class="fnol-details-container">
+  <div class="card">
+    <h2><i class="bi bi-exclamation-triangle"></i> First Notice of Loss (FNOL) Details</h2>
+    <form #fnolDetailsForm="ngForm" (ngSubmit)="onSubmit(fnolDetailsForm)">
+      
+      <div class="form-group">
+        <label for="date-time-noticed"><i class="bi bi-calendar"></i> Date and Time When Incident Was First Noticed:</label>
+        <input type="datetime-local" id="date-time-noticed" name="dateTimeNoticed" required [(ngModel)]="dateTimeNoticed"
+          [max]="today" (blur)="checkFormValidity()" #dateTimeNoticedRef="ngModel">
+        <div *ngIf="dateTimeNoticedRef.invalid && dateTimeNoticedRef.touched" class="error">
+          <i class="bi bi-exclamation-circle"></i> Date and time cannot be in the future.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="reported-method"><i class="bi bi-megaphone"></i> How Was the Incident Reported:</label>
+        <input type="text" id="reported-method" name="reportedMethod" required [(ngModel)]="reportedMethod"
+          (blur)="checkFormValidity()" #reportedMethodRef="ngModel">
+        <div *ngIf="reportedMethodRef.invalid && reportedMethodRef.touched" class="error">
+          <i class="bi bi-exclamation-circle"></i> Reporting method is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="immediate-actions"><i class="bi bi-lightning"></i> Any Immediate Actions Taken:</label>
+        <textarea id="immediate-actions" name="immediateActions" required [(ngModel)]="immediateActions"
+          (blur)="checkFormValidity()" #immediateActionsRef="ngModel"></textarea>
+        <div *ngIf="immediateActionsRef.invalid && immediateActionsRef.touched" class="error">
+          <i class="bi bi-exclamation-circle"></i> Immediate actions taken are required.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary submit-button">
+        <i class="bi bi-box-arrow-in-right"></i> Submit
+      </button>
+    </form>
+  </div>
+</div>

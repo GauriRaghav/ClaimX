@@ -1,0 +1,158 @@
+.dashboard-container {
+  padding: 20px;
+}
+
+.search-filter-sort {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-button {
+  align-self: flex-end;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+  background-color: #0056b3;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  margin: 0 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  height: 150px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card.white {
+  background-color: #fff;
+  color: #000;
+}
+
+.card.red {
+  background-color: #ff4d4d;
+}
+
+.card.green {
+  background-color: #4caf50;
+}
+
+.card.yellow {
+  background-color: #ffeb3b;
+  color: #000;
+}
+
+.file-claim-button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 60px;
+}
+
+.file-claim-button {
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  animation: move 1s infinite alternate;
+  height: 80px;
+}
+
+@keyframes move {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
+.faq-section {
+  margin-top: 20px;
+}
+
+.faq-item {
+  margin-bottom: 10px;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #cf7d2a;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.faq-answer {
+  padding: 10px;
+  background-color: #deeaf0;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.arrow {
+  font-size: 18px;
+}
+
+.arrow.down {
+  transform: rotate(180deg);
+}
+
+.arrow.right {
+  transform: rotate(90deg);
+}
+
+@media (max-width: 600px) {
+  .cards-container {
+    flex-direction: column;
+  }
+
+  .card {
+    margin: 10px 0;
+  }
+}
+
+.file-claim-button {
+  transition: transform 0.1s ease;
+}
+
+.file-claim-button.clicked {
+  transform: scale(0.95); /* Simulates a click effect */
+}
+
+.cards-container .card {
+  text-decoration: none;
+}

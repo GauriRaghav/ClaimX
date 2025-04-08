@@ -1,0 +1,128 @@
+nav.navbar {
+  background: linear-gradient(135deg, #264653, #2a9d8f);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 80px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  padding: 0 20px;
+  border-bottom: 3px solid #f4a261;
+  animation: gradientShift 10s ease infinite;
+  background-size: 400% 400%;
+  font-size: 1.3rem;
+  font-family: cursive;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: white;
+  animation: pulseLogo 3s infinite ease-in-out;
+}
+
+@keyframes pulseLogo {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.navbar-brand img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 2px solid #f4e9cd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  animation: floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.brand {
+  font-size: 28px;
+  font-weight: bold;
+  color: #f4e9cd;
+  text-shadow: 1px 1px 4px #00000066;
+  animation: flickerBrand 2s infinite;
+}
+
+@keyframes flickerBrand {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.6;
+  }
+}
+
+.nav-link {
+  margin: 0 15px;
+  color: #f4e9cd;
+  font-size: 18px;
+  transition: transform 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+  position: relative;
+  font-size: 1.25rem;
+}
+
+.nav-link:hover {
+  color: #ffe57f;
+  transform: scale(1.2);
+  font-weight: 600;
+}
+
+.avatar {
+  font-size: 32px;
+  color: #f4a261;
+  margin-left: 15px;
+  border-radius: 50%;
+  padding: 6px;
+  background: #f4e9cd;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: all 0.4s ease;
+  animation: avatarGlow 5s ease-in-out infinite;
+}
+
+@keyframes avatarGlow {
+  0% { box-shadow: 0 0 10px #f4a26166; }
+  50% { box-shadow: 0 0 20px #f4a261cc; }
+  100% { box-shadow: 0 0 10px #f4a26166; }
+}
+
+.avatar:hover {
+  transform: rotate(5deg) scale(1.2);
+  background: #ffe0b2;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23f4e9cd' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-link {
+    margin: 10px 0;
+  }
+}
+
+a {
+  text-decoration: none;
+}

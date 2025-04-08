@@ -1,0 +1,44 @@
+<footer class="footer-custom animate__animated animate__fadeInUp">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="../../../assets/images/logo-flood.png" alt="ClaimX Logo" class="brand-logo">
+        <h2>ClaimX</h2>
+        <p>Your shield during the storm.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4><i class="bi bi-link-45deg"></i> Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a (click)="navigateTo('about-us')">About</a></li>
+<li><a (click)="navigateTo('contact-us')">Contact</a></li>
+
+          <li><a href="#">File a Claim</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-feedback">
+        <h4><i class="bi bi-chat-left-dots"></i> Feedback</h4>
+        <form id="feedbackForm" (submit)="submitFeedback($event)">
+          <textarea placeholder="Your feedback..." required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <div class="footer-contact">
+        <h4><i class="bi bi-person-lines-fill"></i> Contact Us</h4>
+        <p><i class="bi bi-envelope"></i> support&#64;claimx.com</p>
+        <p><i class="bi bi-telephone"></i> +91-1234567890</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener"><i class="bi bi-twitter-x"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note text-center">
+      <p>&copy; 2025 ClaimX. Designed with care for peace of mind.</p>
+    </div>
+  </div>
+</footer>

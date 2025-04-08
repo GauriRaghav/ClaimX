@@ -1,0 +1,56 @@
+<app-progress-bar
+  [currentStep]="7"
+  [steps]="['Personal Info','Incident Details','FNOL','Property Details','Damage Assessment','Witness Info','Insurance Details','Additional Info','Banking Info','Form Submit']">
+</app-progress-bar>
+
+<div class="container">
+  <div class="card declaration-consent-card">
+    <div class="card-header">
+      <h2 class="heading text-primary">
+        <i class="bi bi-person-lines-fill bold"></i> Declaration & Consent
+      </h2>
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="declarationForm" (submit)="submitDeclarationConsent($event)">
+        <div class="form-group">
+          <input type="checkbox" id="userAgreement" formControlName="userAgreement" (change)="toggleForm($event)">
+          <label for="userAgreement">
+            I confirm that the information provided is accurate and true to the best of my knowledge.
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="signature"><i class="bi bi-pencil"></i> Signature</label>
+          <input type="text" class="form-control" id="signature" formControlName="signature"
+            (blur)="checkFieldValidity('signature')" placeholder="Enter your signature">
+          <div *ngIf="validationMessages['signature']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['signature'] }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="submissionDate"><i class="bi bi-calendar"></i> Date of Submission</label>
+          <input type="date" class="form-control" id="submissionDate" formControlName="submissionDate"
+            [max]="today" (blur)="checkFieldValidity('submissionDate')">
+          <div *ngIf="validationMessages['submissionDate']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['submissionDate'] }}
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary submit-button mt-2" [disabled]="!declarationForm.valid">
+          <i class="bi bi-send"></i> Submit
+        </button>
+      </form>
+
+      <div class="creative-image-area">
+        <img src="./../../../../assets/images/consent.jpg" alt="Creative" class="img-fluid creative-image">
+      </div>
+
+      <p class="note">
+        Please note that the details you have filled can be edited within 14 days of the first submission. Ensure all
+        information is accurate before submitting.
+      </p>
+    </div>
+  </div>
+</div>

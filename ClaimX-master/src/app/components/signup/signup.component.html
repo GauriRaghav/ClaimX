@@ -1,0 +1,41 @@
+<div class="signup-container">
+  <div class="card">
+    <h2><i class="bi bi-person-plus"></i> Sign Up</h2>
+    <form (ngSubmit)="onSignUp()">
+      <div class="form-group">
+        <label for="signup-method"><i class="bi bi-pencil-square"></i> Sign Up with:</label>
+        <select id="signup-method" [(ngModel)]="signupMethod" name="signupMethod" required>
+          <option value="phoneNumber">Phone Number</option>
+          <option value="email">Email</option>
+        </select>
+      </div>
+      <div *ngIf="signupMethod === 'phoneNumber'" class="form-group">
+        <label for="phone-number"><i class="bi bi-telephone"></i> Phone Number:</label>
+        <input type="tel" id="phone-number" [(ngModel)]="phoneNumber" name="phoneNumber" required>
+      </div>
+      <div *ngIf="signupMethod === 'email'" class="form-group">
+        <label for="user-email"><i class="bi bi-envelope"></i> Email:</label>
+        <input type="email" id="user-email" [(ngModel)]="userEmail" name="userEmail" required>
+      </div>
+      <div class="form-group">
+        <label for="password"><i class="bi bi-lock"></i> Password:</label>
+        <input type="password" id="password" [(ngModel)]="password" name="password" required (input)="validatePassword()">
+        <div class="password-requirements">
+          <p *ngIf="!passwordLengthValid"><i class="bi bi-x-circle"></i> Password must be at least 8 characters long</p>
+          <p *ngIf="!passwordNumberValid"><i class="bi bi-x-circle"></i> Password must contain at least one number</p>
+          <p *ngIf="!passwordSpecialCharValid"><i class="bi bi-x-circle"></i> Password must contain at least one special character</p>
+          <p *ngIf="!passwordUppercaseValid"><i class="bi bi-x-circle"></i> Password must contain at least one uppercase letter</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirm-password"><i class="bi bi-lock-fill"></i> Confirm Password:</label>
+        <input type="password" id="confirm-password" [(ngModel)]="confirmPassword" name="confirmPassword" required (input)="checkPasswordMatch()">
+        <div class="password-match" [ngClass]="{'matched': passwordsMatch, 'not-matched': !passwordsMatch && confirmPassword.length > 0}">
+          <p *ngIf="passwordsMatch && confirmPassword.length > 0"><i class="bi bi-check-circle"></i> Password matched</p>
+          <p *ngIf="!passwordsMatch && confirmPassword.length > 0"><i class="bi bi-x-circle"></i> Password not matched</p>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()"><i class="bi bi-box-arrow-in-right"></i> Sign Up</button>
+    </form>
+  </div>
+</div>

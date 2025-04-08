@@ -1,0 +1,315 @@
+.home {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1b1b1b;
+  background-color: #f4e9cd;
+}
+
+.hero-section {
+  position: relative;
+  padding: 100px 20px;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 2s ease-in;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('./../../../assets/images/hero-bg.png');
+  background-size:auto;
+  background-position: center;
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-title {
+  font-size: 64px;
+  font-weight: bold;
+  color: #f4e9cd;
+  background: linear-gradient(to right, #264653, #2a9d8f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #fffb00; }
+  /* 100% { text-shadow: 0 0 15px #f1f3f3; } */
+}
+
+.tagline {
+  font-size: 28px;
+  margin-top: 15px;
+  color: #e1ff00;
+}
+
+.buttons button {
+  font-size: 18px;
+  padding: 10px 25px;
+  margin: 15px 10px;
+  border: none;
+  border-radius: 30px;
+  background-color: #2a9d8f;
+  color: #ffffff;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.buttons button:hover {
+  background-color: #21867a;
+  transform: translateY(-4px) scale(1.05);
+}
+
+.for-whom-section .feature,
+.how-it-works .feature {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.for-whom-section .feature:hover,
+.how-it-works .feature:hover {
+  transform: translateY(-5px);
+}
+
+.feature i,
+.testimonial i {
+  font-size: 40px;
+  margin-bottom: 15px;
+  color: #f4a261;
+}
+
+.feature h4,
+.feature h5,
+.testimonial h4 {
+  color: #264653;
+  font-weight: 600;
+}
+
+.carousel-wrapper {
+  background: #e0f2f1;
+  padding: 50px 0;
+  border-radius: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+
+.how-it-works-heading {
+  color: #264653;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  font-size: 2.8rem;
+  position: relative;
+}
+
+.how-it-works-heading::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background-color: #2a9d8f;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.testimonials-section {
+  background: #ffffff;
+  padding: 60px 30px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.testimonials-section .testimonial {
+  background: linear-gradient(145deg, #ffffff, #f4e9cd);
+  border-radius: 20px;
+  padding: 40px 30px 30px;
+  margin: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.testimonials-section .testimonial:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.testimonials-section .testimonial::before {
+  content: "\201C";
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 80px;
+  color: #2a9d8f33;
+  z-index: 0;
+}
+
+.testimonials-section .testimonial img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #2a9d8f;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.testimonials-section .testimonial:hover img {
+  transform: rotate(-5deg) scale(1.1);
+}
+
+.testimonials-section .testimonial p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #4a4a4a;
+  position: relative;
+  z-index: 1;
+  margin-top: 10px;
+}
+
+.testimonials-section .testimonial h4 {
+  margin-top: 15px;
+  color: #1b1b1b;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.cta {
+  background: linear-gradient(to right, #2a9d8f, #f4a261);
+  padding: 60px 20px;
+  color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.cta h2 {
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+.cta-background-shapes .blob {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #f4a261, #e76f51);
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: floatBlob 6s ease-in-out infinite alternate;
+}
+
+.blob1 {
+  top: -30px;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.blob2 {
+  top: 0;
+  right: 10%;
+  animation-delay: 1s;
+}
+
+.blob3 {
+  bottom: -50px;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, #2a9d8f, #264653);
+  animation-delay: 2s;
+}
+
+@keyframes floatBlob {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(20px) scale(1.05); }
+}
+
+.cta-wave {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 0;
+}
+
+.cta > *:not(.cta-wave):not(.cta-background-shapes) {
+  position: relative;
+  z-index: 1;
+}
+.cta-button-wrapper {
+  display: inline-block;
+  padding: 15px 25px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  animation: subtleMove 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.cta-button-wrapper:hover {
+  transform: scale(1.03);
+}
+
+.attention-box {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #2a9d8f;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.attention-box:hover {
+  background-color: #21867a;
+}
+
+@keyframes subtleMove {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .animated-title { font-size: 42px; }
+  .tagline { font-size: 20px; }
+  .buttons button { font-size: 16px; padding: 8px 20px; }
+  .testimonials-section .testimonial {
+    margin: 20px auto;
+  }
+  .testimonials-section .testimonial img {
+    width: 60px;
+    height: 60px;
+  }
+}

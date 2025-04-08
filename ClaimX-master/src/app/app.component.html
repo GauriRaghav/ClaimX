@@ -1,0 +1,19 @@
+<div style="display: flex; flex-direction: column; min-height: 100vh;">
+  <ng-container *ngIf="userRole === 'user'">
+    <app-u-navbar></app-u-navbar>
+  </ng-container>
+
+  <ng-container *ngIf="userRole === 'adjuster'">
+    <app-a-navbar></app-a-navbar>
+  </ng-container>
+
+  <ng-container *ngIf="userRole === ''">
+    <app-navbar></app-navbar>
+  </ng-container>
+
+  <div style="flex-grow: 1; margin-top: 100px;">
+    <router-outlet></router-outlet>
+  </div>
+
+  <app-footer></app-footer>
+</div>

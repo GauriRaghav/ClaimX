@@ -1,0 +1,65 @@
+<app-progress-bar
+  [currentStep]="6"
+  [steps]="['Personal Info','Incident Details','FNOL','Property Details','Damage Assessment','Witness Info','Insurance Details','Additional Info','Banking Info','Form Submit']">
+</app-progress-bar>
+
+<div class="witness-info-container">
+<div class="card witness-card">
+  <div class="card-header">
+    <h2 class="heading text-primary"><i class="bi bi-person-lines-fill bold"></i> Witness Information (Optional)</h2>
+ </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-8">
+        <form (submit)="submitWitnessInformation($event)" #witnessForm="ngForm">
+          <div class="form-group">
+            <label for="witnessName"><i class="bi bi-person"></i> Witness Name (If any)</label>
+            <input type="text" class="form-control" id="witnessName" name="witnessName" [(ngModel)]="witnessName" placeholder="Enter witness name" (blur)="checkFieldValidity('witnessName')">
+            <div *ngIf="validationMessages['witnessName']" class="error">
+              <i class="bi bi-exclamation-circle"></i> {{ validationMessages['witnessName'] }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="witnessAge"><i class="bi bi-calendar"></i> Witness Age</label>
+            <input type="number" class="form-control" id="witnessAge" name="witnessAge" [(ngModel)]="witnessAge" placeholder="Enter witness age" (blur)="checkFieldValidity('witnessAge')">
+            <div *ngIf="validationMessages['witnessAge']" class="error">
+              <i class="bi bi-exclamation-circle"></i> {{ validationMessages['witnessAge'] }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="witnessGender"><i class="bi bi-gender-ambiguous"></i> Witness Gender</label>
+            <select class="form-control" id="witnessGender" name="witnessGender" [(ngModel)]="witnessGender" (change)="checkFieldValidity('witnessGender')">
+              <option value="" disabled selected>Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+            <div *ngIf="validationMessages['witnessGender']" class="error">
+              <i class="bi bi-exclamation-circle"></i> {{ validationMessages['witnessGender'] }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="witnessContact"><i class="bi bi-telephone"></i> Witness Contact Information</label>
+            <input type="text" class="form-control" id="witnessContact" name="witnessContact" [(ngModel)]="witnessContact" placeholder="Enter contact information" pattern="^\d{10}$" (blur)="checkFieldValidity('witnessContact')">
+            <div *ngIf="validationMessages['witnessContact']" class="error">
+              <i class="bi bi-exclamation-circle"></i> {{ validationMessages['witnessContact'] }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="witnessAddress"><i class="bi bi-geo-alt"></i> Witness Address</label>
+            <textarea class="form-control" id="witnessAddress" name="witnessAddress" [(ngModel)]="witnessAddress" placeholder="Enter witness address" (blur)="checkFieldValidity('witnessAddress')"></textarea>
+            <div *ngIf="validationMessages['witnessAddress']" class="error">
+              <i class="bi bi-exclamation-circle"></i> {{ validationMessages['witnessAddress'] }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="witnessStatement"><i class="bi bi-file-earmark-text"></i> Witness Statement (Optional)</label>
+            <textarea class="form-control" id="witnessStatement" name="witnessStatement" [(ngModel)]="witnessStatement" placeholder="Enter witness statement"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary submit-button"><i class="bi bi-box-arrow-in-right"></i> Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

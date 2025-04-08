@@ -1,0 +1,50 @@
+<div class="container">
+    <h2 class="centered-title">
+        <i 
+          class="bi"
+          [ngClass]="{
+            'bi-check-circle text-green': pageTitle.includes('Approved'),
+            'bi-x-circle text-red': pageTitle.includes('Rejected'),
+            'bi-hourglass-split text-yellow': pageTitle.includes('Pending'),
+            'bi-list text-dark': pageTitle === 'Claim List'
+          }"
+        ></i>
+        {{ pageTitle }}
+      </h2>
+    <table class="claim-table">
+      <thead>
+        <tr>
+          <th>Claim No</th>
+          <th>Claimant Name</th>
+          <th>File Date</th>
+          <th>Claim Amount</th>
+          <th>Location</th>
+          <th>Relation</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let claim of filteredClaims" class="row-animate">
+          <td>{{ claim.claimNo }}</td>
+          <td>{{ claim.name }}</td>
+          <td>{{ claim.fileDate }}</td>
+          <td>&#8377;{{ claim.amount }}</td>
+          <td>{{ claim.location }}</td>
+          <td>{{ claim.relation }}</td>
+          <td>
+            <span
+              class="status-badge"
+              [ngClass]="{
+                'approved': claim.status === 'Approved',
+                'pending': claim.status === 'Pending',
+                'rejected': claim.status === 'Rejected'
+              }"
+            >
+              {{ claim.status }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

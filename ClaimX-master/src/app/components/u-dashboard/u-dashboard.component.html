@@ -1,0 +1,63 @@
+<div class="dashboard-container">
+  <div class="search-filter-sort">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search claims..." id="searchClaims">
+    </div>
+    <div class="form-group">
+      <label for="filterDateStart">Start Date</label>
+      <input type="date" class="form-control" id="filterDateStart" max="{{today}}">
+    </div>
+    <div class="form-group">
+      <label for="filterDateEnd">End Date</label>
+      <input type="date" class="form-control" id="filterDateEnd" max="{{today}}">
+    </div>
+    <div class="form-group">
+      <label for="filterAmountMin">Min Amount</label>
+      <input type="number" class="form-control" id="filterAmountMin" placeholder="Minimum amount" min="0">
+    </div>
+    <div class="form-group">
+      <label for="filterAmountMax">Max Amount</label>
+      <input type="number" class="form-control" id="filterAmountMax" placeholder="Maximum amount" min="0">
+    </div>
+    <div class="form-group">
+      <label for="filterLocation">Location</label>
+      <input type="text" class="form-control" id="filterLocation" placeholder="Location">
+    </div>
+    <div class="form-group">
+      <label for="sortClaims">Sort By</label>
+      <select class="form-control" id="sortClaims">
+        <option value="amount">Amount</option>
+        <option value="date">Date</option>
+      </select>
+    </div>
+    <button class="btn btn-primary filter-button"><i class="bi bi-funnel"></i> Apply Filters</button>
+  </div>
+  <div class="cards-container">
+    <a routerLink="/claim/list" class="card white"><i class="bi bi-list"></i> Claim List</a>
+    <a routerLink="/claim/rejected" class="card red"><i class="bi bi-x-circle"></i> Rejected Claims</a>
+    <a routerLink="/claim/approved" class="card green"><i class="bi bi-check-circle"></i> Approved Claims</a>
+    <a routerLink="/claim/pending" class="card yellow"><i class="bi bi-hourglass-split"></i> Pending Claims</a>
+  </div>
+  
+  <div class="file-claim-button-container">
+    <button class="file-claim-button" (click)="navigateToClaimPage()" 
+            (mousedown)="isClicked = true" 
+            (mouseup)="isClicked = false" 
+            [class.clicked]="isClicked">
+      <i class="bi bi-file-earmark-plus"></i> File A Claim
+    </button>
+  </div>
+  
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item" *ngFor="let faq of faqs">
+      <div class="faq-question" (click)="toggleFaq(faq)">
+        {{ faq.question }}
+        <span class="arrow" [ngClass]="{'down': faq.open, 'right': !faq.open}">&#9660;</span>
+      </div>
+      <div class="faq-answer" *ngIf="faq.open">
+        {{ faq.answer }}
+      </div>
+    </div>
+  </div>
+</div>

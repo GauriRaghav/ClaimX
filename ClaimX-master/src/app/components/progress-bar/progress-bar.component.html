@@ -1,0 +1,25 @@
+<div class="progress-container" #progressContainer>
+  <div class="progress-line"></div>
+  <div
+    class="progress-line-fill"
+    [style.width]="fillWidth"
+  ></div>
+
+  <div class="progress-steps">
+    <ng-container *ngFor="let step of steps; let i = index">
+      <div class="progress-step">
+        <div
+          class="circle"
+          #circleRef
+          [ngClass]="{
+            active: currentStep === i + 1,
+            completed: i + 1 < currentStep
+          }"
+        >
+          {{ i + 1 }}
+        </div>
+        <div class="step-label">{{ step }}</div>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<app-progress-bar
+  [currentStep]="4"
+  [steps]="['Personal Info', 'Incident Details', 'FNOL', 'Property Details', 'Damage Assessment', 'Banking Info', 'Form Submit']">
+</app-progress-bar>
+
+<div class="property-details-container">
+  <div class="card">
+    <h2><i class="bi bi-house-door"></i> Property Details</h2>
+    <form [formGroup]="propertyDetailsForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Property Type -->
+      <div class="form-group">
+        <label for="propertyType"><i class="bi bi-building"></i> Type of Property</label>
+        <select id="propertyType" formControlName="propertyType" (input)="checkFormValidity()">
+          <option value="">Select Type</option>
+          <option value="residential">Residential</option>
+          <option value="commercial">Commercial</option>
+          <option value="other">Other</option>
+        </select>
+        <div *ngIf="propertyDetailsForm.controls['propertyType'].invalid && (propertyDetailsForm.controls['propertyType'].dirty || propertyDetailsForm.controls['propertyType'].touched)" class="error">
+          <i class="bi bi-exclamation-circle"></i> Property type is required.
+        </div>
+      </div>
+
+      <!-- Property Occupied -->
+      <div class="form-group">
+        <label for="propertyOccupied"><i class="bi bi-person-check"></i> Is the Property Occupied?</label>
+        <div class="radio-group">
+          <label><input type="radio" formControlName="propertyOccupied" value="yes" (input)="checkFormValidity()"> Yes</label>
+          <label><input type="radio" formControlName="propertyOccupied" value="no" (input)="checkFormValidity()"> No</label>
+        </div>
+        <div *ngIf="propertyDetailsForm.controls['propertyOccupied'].invalid && (propertyDetailsForm.controls['propertyOccupied'].dirty || propertyDetailsForm.controls['propertyOccupied'].touched)" class="error">
+          <i class="bi bi-exclamation-circle"></i> Please select if the property is occupied.
+        </div>
+      </div>
+
+      <!-- Pre-existing Damage -->
+      <div class="form-group">
+        <label for="preExistingDamage"><i class="bi bi-tools"></i> Any Pre-existing Damage?</label>
+        <div class="radio-group">
+          <label><input type="radio" formControlName="preExistingDamage" value="yes" (input)="checkFormValidity()"> Yes</label>
+          <label><input type="radio" formControlName="preExistingDamage" value="no" (input)="checkFormValidity()"> No</label>
+        </div>
+        <textarea
+          id="damageExplanation"
+          formControlName="damageExplanation"
+          placeholder="If yes, please explain"
+          rows="3"
+          [disabled]="!isPreExistingDamageYes">
+        </textarea>
+        <div *ngIf="propertyDetailsForm.controls['damageExplanation'].invalid && (propertyDetailsForm.controls['damageExplanation'].dirty || propertyDetailsForm.controls['damageExplanation'].touched) && isPreExistingDamageYes" class="error">
+          <i class="bi bi-exclamation-circle"></i> Please explain the pre-existing damage.
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary submit-button">
+        <i class="bi bi-box-arrow-in-right"></i> Submit
+      </button>
+    </form>
+  </div>
+</div>

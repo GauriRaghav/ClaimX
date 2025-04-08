@@ -1,0 +1,127 @@
+<div class="home">
+  <!-- HERO SECTION -->
+  <section class="hero-section text-center">
+    <div class="container">
+      <h1 class="animated-title">ClaimX</h1>
+      <p class="tagline">Empowering Flood Recovery with Fast, Reliable Insurance Claims</p>
+      <div class="buttons">
+        <button class="signup-btn" (click)="Signup()">File a Claim</button>
+        <button class="login-btn" (click)="Login()">Check Claim Status</button>
+      </div>
+    </div>
+  </section>
+
+<!-- FOR WHOM SECTION -->
+<section class="for-whom-section container mt-5">
+  <div class="row text-center">
+    <div class="col-md-4 feature-card">
+      <div class="feature">
+        <i class="bi bi-house-heart"></i>
+        <h4>Flood Victims</h4>
+        <p>We simplify the claim process so you can focus on recovery.</p>
+      </div>
+    </div>
+    <div class="col-md-4 feature-card">
+      <div class="feature">
+        <i class="bi bi-clipboard-check"></i>
+        <h4>Claim Adjusters</h4>
+        <p>Access and manage claims efficiently with smart tools.</p>
+      </div>
+    </div>
+    <div class="col-md-4 feature-card">
+      <div class="feature">
+        <i class="bi bi-person-workspace"></i>
+        <h4>Brokers & Agencies</h4>
+        <p>Bind policies and track customer claims in real-time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- CAROUSEL SECTION -->
+  <section class="carousel-wrapper my-5">
+    <app-carousel></app-carousel>
+  </section>
+
+  <!-- HOW IT WORKS SECTION -->
+  <section class="how-it-works container text-center my-5">
+    <h1 class="how-it-works-heading animate__animated animate__fadeInDown">How It Works</h1>
+    <div class="row">
+      <div class="col-md-3 feature-card">
+        <div class="feature">
+          <i class="bi bi-file-earmark-text"></i>
+          <h5>Step 1</h5>
+          <p>Submit your flood claim with required documents.</p>
+        </div>
+      </div>
+      <div class="col-md-3 feature-card">
+        <div class="feature">
+          <i class="bi bi-cloud-upload"></i>
+          <h5>Step 2</h5>
+          <p>Upload evidence like photos or videos securely.</p>
+        </div>
+      </div>
+      <div class="col-md-3 feature-card">
+        <div class="feature">
+          <i class="bi bi-search"></i>
+          <h5>Step 3</h5>
+          <p>Claim gets reviewed by a professional adjuster.</p>
+        </div>
+      </div>
+      <div class="col-md-3 feature-card">
+        <div class="feature">
+          <i class="bi bi-cash-stack"></i>
+          <h5>Step 4</h5>
+          <p>Approved claims get paid fast to your bank.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- TESTIMONIAL SECTION -->
+  <section class="testimonials-section container">
+    <h2 class="mb-5 animated-title">What Our Clients Say</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-5 testimonial" style="animation-delay: 0s">
+        <img src="../../../assets/images/avatar-1.png" alt="Ramesh Verma">
+        <p>“ClaimX made a stressful time so much easier. I filed my claim in minutes and got support immediately!”</p>
+        <h4>Ramesh Verma</h4>
+      </div>
+      <div class="col-md-5 testimonial" style="animation-delay: 0.2s">
+        <img src="../../../assets/images/avatar-2.png" alt="Neha Sharma">
+        <p>“Excellent support and fast service. Highly recommended to all looking for peace of mind during floods.”</p>
+        <h4>Neha Sharma</h4>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-5 testimonial" style="animation-delay: 0.4s">
+        <img src="../../../assets/images/avatar-3.png" alt="Ravi Singh">
+        <p>“The whole process from filing to payout was seamless. Loved the website and mobile access.”</p>
+        <h4>Ravi Singh</h4>
+      </div>
+      <div class="col-md-5 testimonial" style="animation-delay: 0.6s">
+        <img src="../../../assets/images/avatar-4.png" alt="Priya Patel">
+        <p>“They truly care. From chatbot to claim adjusters, everyone was compassionate and professional.”</p>
+        <h4>Priya Patel</h4>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA SECTION -->
+  <section class="cta text-center my-5 animate__animated animate__fadeInUp animate__slower animate__infinite" style="position: relative; overflow: hidden;">
+    <svg class="cta-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#2a9d8f" fill-opacity="1" d="M0,160L60,154.7C120,149,240,139,360,144C480,149,600,171,720,181.3C840,192,960,192,1080,181.3C1200,171,1320,149,1380,138.7L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+    </svg>
+    <div class="cta-background-shapes">
+      <div class="blob blob1"></div>
+      <div class="blob blob2"></div>
+      <div class="blob blob3"></div>
+    </div>
+    <h2 class="mb-4 animate__animated animate__pulse animate__delay-1s animate__infinite">Ready to File a Claim?</h2>
+    <div class="cta-button-wrapper">
+      <button class="btn signup-btn attention-box" (click)="Signup()">Get Started Now</button>
+  </div>
+  </section>
+
+</div>

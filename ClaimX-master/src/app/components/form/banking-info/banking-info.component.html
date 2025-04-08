@@ -1,0 +1,138 @@
+<app-progress-bar
+  [currentStep]="6"
+  [steps]="['Personal Info','Incident Details','FNOL','Property Details','Damage Assessment','Witness Info','Insurance Details','Additional Info','Banking Info','Form Submit']">
+</app-progress-bar>
+
+<div class="banking-info-container">
+  <div class="card banking-info-card m">
+    <div class="card-header">
+      <h2 class="heading text-primary">
+        <i class="bi bi-person-lines-fill bold"></i> Banking Information
+      </h2>
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="bankingForm" (submit)="submitBankingInformation($event)">
+        <div class="form-group">
+          <label for="accountHolderName"><i class="bi bi-person"></i> Account Holder Name</label>
+          <input type="text" class="form-control" id="accountHolderName" formControlName="accountHolderName"
+            placeholder="Enter account holder name" (blur)="checkFieldValidity('accountHolderName')" autocomplete="off" />
+          <div *ngIf="validationMessages['accountHolderName']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['accountHolderName'] }}
+          </div>
+        </div>
+
+        <!-- Repeat this pattern for each field -->
+        <div class="form-group">
+          <label for="bankName"><i class="bi bi-building"></i> Bank Name</label>
+          <input type="text" class="form-control" id="bankName" formControlName="bankName" placeholder="Enter bank name"
+            (blur)="checkFieldValidity('bankName')" autocomplete="off" />
+          <div *ngIf="validationMessages['bankName']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['bankName'] }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bankBranchName"><i class="bi bi-geo-alt"></i> Bank Branch Name</label>
+          <input type="text" class="form-control" id="bankBranchName" formControlName="bankBranchName"
+            placeholder="Enter bank branch name" (blur)="checkFieldValidity('bankBranchName')" autocomplete="off" />
+          <div *ngIf="validationMessages['bankBranchName']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['bankBranchName'] }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="accountNumber"><i class="bi bi-credit-card"></i> Account Number</label>
+          <input type="text" class="form-control" id="accountNumber" formControlName="accountNumber"
+            placeholder="Enter account number" (blur)="checkFieldValidity('accountNumber')" autocomplete="off" />
+          <div *ngIf="validationMessages['accountNumber']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['accountNumber'] }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ifscCode"><i class="bi bi-key"></i> IFSC Code (or Routing Number)</label>
+          <input type="text" class="form-control" id="ifscCode" formControlName="ifscCode"
+            placeholder="Enter IFSC or Routing Number" (blur)="checkFieldValidity('ifscCode')" autocomplete="off" />
+          <div *ngIf="validationMessages['ifscCode']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['ifscCode'] }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bankAddress"><i class="bi bi-map"></i> Bank Address (Optional)</label>
+          <input type="text" class="form-control" id="bankAddress" formControlName="bankAddress"
+            placeholder="Enter bank address" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+          <label for="paymentPreference"><i class="bi bi-cash"></i> Payment Preference</label>
+          <select class="form-control" id="paymentPreference" formControlName="paymentPreference"
+            (blur)="checkFieldValidity('paymentPreference')">
+            <option value="" disabled>Select payment preference</option>
+            <option>Direct Bank Transfer</option>
+            <option>Other Methods</option>
+          </select>
+          <div *ngIf="validationMessages['paymentPreference']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['paymentPreference'] }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="contactDetails"><i class="bi bi-envelope"></i> Contact Details of the Account Holder</label>
+          <input type="email" class="form-control" id="contactEmail" formControlName="contactEmail"
+            placeholder="Enter email" (blur)="checkFieldValidity('contactEmail')" autocomplete="off" />
+          <div *ngIf="validationMessages['contactEmail']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['contactEmail'] }}
+          </div>
+
+          <input type="tel" class="form-control mt-2" id="contactPhone" formControlName="contactPhone"
+            placeholder="Enter phone number" (blur)="checkFieldValidity('contactPhone')" autocomplete="off" />
+          <div *ngIf="validationMessages['contactPhone']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['contactPhone'] }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="proofOfOwnership"><i class="bi bi-file-earmark-text"></i> Proof of Account Ownership</label>
+          <input type="file" class="form-control" id="proofOfOwnership" formControlName="proofOfOwnership"
+            (blur)="checkFieldValidity('proofOfOwnership')" />
+          <div *ngIf="validationMessages['proofOfOwnership']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['proofOfOwnership'] }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="identityVerification"><i class="bi bi-card-checklist"></i> Identity Verification Documents</label>
+          <input type="file" class="form-control" id="identityVerification" formControlName="identityVerification"
+            (blur)="checkFieldValidity('identityVerification')" />
+          <div *ngIf="validationMessages['identityVerification']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['identityVerification'] }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="paymentDescription"><i class="bi bi-pencil-square"></i> Purpose of Payment Description</label>
+          <textarea class="form-control" id="paymentDescription" formControlName="paymentDescription"
+            placeholder="Enter reason for the claim" (blur)="checkFieldValidity('paymentDescription')"></textarea>
+          <div *ngIf="validationMessages['paymentDescription']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['paymentDescription'] }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="taxInformation"><i class="bi bi-receipt"></i> Tax Information</label>
+          <input type="text" class="form-control" id="taxInformation" formControlName="taxInformation"
+            placeholder="Enter tax identification number" (blur)="checkFieldValidity('taxInformation')" autocomplete="off" />
+          <div *ngIf="validationMessages['taxInformation']" class="error">
+            <i class="bi bi-exclamation-circle"></i> {{ validationMessages['taxInformation'] }}
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary submit-button mt-3" [disabled]="!bankingForm.valid">
+          <i class="bi bi-send"></i> Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

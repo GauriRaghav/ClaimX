@@ -1,0 +1,128 @@
+.property-details-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./../../../../assets/images/property-details.jpg');
+  background-size: cover;
+  padding: 20px;
+  height: 900px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px; /* Increased padding for larger card */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 600px; /* Increased max-width for larger card */
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+h2 {
+  text-align: center;
+  color: #007bff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #007bff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  animation: move 1s infinite alternate;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes move {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+  .property-details-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card {
+  background-color: #fff;
+  padding: 30px; /* Increased padding for larger card */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px; /* Increased max-width for larger card */
+  animation: fadeIn 1s ease-in-out;
+  }
+
+  input, select, textarea, .submit-button {
+    padding: 10px;
+  }
+
+  .image-container {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+}
+
+.radio-group {
+  display: flex;
+  gap: 70px; /* Space between radio options */
+  align-items: center;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between radio button and label */
+  margin-bottom: 20px;
+}

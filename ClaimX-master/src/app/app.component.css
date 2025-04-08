@@ -1,0 +1,22 @@
+app.component.css
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+router-outlet {
+  display: block;
+  position: relative;
+}
+
+/* Container that holds routed views */
+:host ::ng-deep router-outlet + * {
+  margin-top: 100px; /* Push content below navbar (adjust as needed) */
+}
+
+app-footer {
+  display: block;
+  height: auto;
+}

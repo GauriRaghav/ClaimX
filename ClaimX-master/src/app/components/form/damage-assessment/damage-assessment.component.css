@@ -1,0 +1,83 @@
+.fnol-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full height to center vertically */ 
+  padding: 20px; /* Add padding around the container */
+  background-image: url('./../../../../assets/images/damage-assessment2.jpg');
+  background-size: cover;
+  height: 900px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  animation: fadeIn 1s ease-in-out;
+  margin: 20px auto; /* Center the card and add vertical spacing */
+}
+
+
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+h2 {
+  font-size: 2em; /* Increase font size */
+  color: blue; /* Change color to blue */
+  margin-bottom: 20px; /* Add space between heading and input fields */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Add space between form groups */
+}
+
+.form-group label {
+  font-weight: bold;
+  font-size: 1.2em; /* Increase font size */
+}
+
+.checkbox-item {
+  display: flex;
+  justify-content: space-between; /* Ensure options and checkboxes are on opposite sides */
+  align-items: center;
+  margin-bottom: 10px; /* Add more space between options */
+}
+
+.checkbox-item span {
+  font-size: 16px; /* Increase font size */
+  margin-right: 10px; /* Add space between text and checkbox */
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 20px; /* Increase checkbox size */
+  height: 20px; /* Increase checkbox size */
+  margin-left: auto; /* Align checkbox to the right */
+}
+
+.form-group input[type="number"],
+.form-group input[type="file"] {
+  width: calc(100% - 20px); /* Full width minus padding */
+}
+
+.file-names ul {
+  list-style-type: none; /* Remove bullet points */
+}
+
+.file-names li {
+  margin-bottom: 5px; /* Add space between file names */
+}
+
+.submit-button {
+  width: 100%; /* Full width button */
+}

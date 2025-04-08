@@ -1,0 +1,105 @@
+.progress-container {
+  position: relative;
+  width: 100%;
+  padding: 40px 32px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+/* Background line */
+.progress-line {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  right: 32px;
+  height: 4px;
+  background-color: #e0e0e0;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* Filled portion of line */
+.progress-line-fill {
+  position: absolute;
+  top: 50%;
+  height: 4px;
+  background-color: #28a745;
+  transform: translateY(-50%);
+  z-index: 2;
+  transition: width 0.4s ease-in-out;
+}
+
+/* Step items */
+.progress-steps {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+  padding: 0 32px;
+}
+
+/* Step wrapper */
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Circle base */
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #cfcfcf;
+  color: #fff;
+  line-height: 40px;
+  font-weight: bold;
+  transition: background-color 0.4s, transform 0.4s;
+}
+
+/* Active step */
+.circle.active {
+  background-color: #007bff;
+  transform: scale(1.15);
+}
+
+/* Completed step */
+.circle.completed {
+  background-color: #28a745;
+}
+
+/* Step label below the circle */
+.step-label {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .circle {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .step-label {
+    font-size: 11px;
+  }
+
+  .progress-container {
+    padding: 20px 16px;
+  }
+
+  .progress-line,
+  .progress-line-fill {
+    left: 16px;
+    right: 16px;
+  }
+
+  .progress-steps {
+    padding: 0 16px;
+  }
+}
