@@ -156,3 +156,12 @@
 .cards-container .card {
   text-decoration: none;
 }
+.active-tab {
+  border: 2px solid #264653;
+  background-color: #f0f4f2;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(38, 70, 83, 0.15);
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+  position: relative;
+}

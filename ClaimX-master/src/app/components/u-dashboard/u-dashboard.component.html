@@ -1,15 +1,16 @@
 <div class="dashboard-container">
+  <!-- Search / Filter / Sort Section -->
   <div class="search-filter-sort">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Search claims..." id="searchClaims">
     </div>
     <div class="form-group">
       <label for="filterDateStart">Start Date</label>
-      <input type="date" class="form-control" id="filterDateStart" max="{{today}}">
+      <input type="date" class="form-control" id="filterDateStart" max="{{ today }}">
     </div>
     <div class="form-group">
       <label for="filterDateEnd">End Date</label>
-      <input type="date" class="form-control" id="filterDateEnd" max="{{today}}">
+      <input type="date" class="form-control" id="filterDateEnd" max="{{ today }}">
     </div>
     <div class="form-group">
       <label for="filterAmountMin">Min Amount</label>
@@ -30,24 +31,62 @@
         <option value="date">Date</option>
       </select>
     </div>
-    <button class="btn btn-primary filter-button"><i class="bi bi-funnel"></i> Apply Filters</button>
+    <button class="btn btn-primary filter-button" (click)="applyFilters()">
+      <i class="bi bi-funnel"></i> Apply Filters
+    </button>
   </div>
+
+  <!-- Tab Cards -->
   <div class="cards-container">
-    <a routerLink="/claim/list" class="card white"><i class="bi bi-list"></i> Claim List</a>
-    <a routerLink="/claim/rejected" class="card red"><i class="bi bi-x-circle"></i> Rejected Claims</a>
-    <a routerLink="/claim/approved" class="card green"><i class="bi bi-check-circle"></i> Approved Claims</a>
-    <a routerLink="/claim/pending" class="card yellow"><i class="bi bi-hourglass-split"></i> Pending Claims</a>
+    <a class="card white"
+       [ngClass]="{ 'active-tab': selectedTab === 'list' }"
+       (click)="changeTab('list')">
+      <i class="bi bi-list"></i> Claim List
+    </a>
+
+    <a class="card red"
+       [ngClass]="{ 'active-tab': selectedTab === 'rejected' }"
+       (click)="changeTab('rejected')">
+      <i class="bi bi-x-circle"></i> Rejected Claims
+    </a>
+
+    <a class="card green"
+       [ngClass]="{ 'active-tab': selectedTab === 'approved' }"
+       (click)="changeTab('approved')">
+      <i class="bi bi-check-circle"></i> Approved Claims
+    </a>
+
+    <a class="card yellow"
+       [ngClass]="{ 'active-tab': selectedTab === 'pending' }"
+       (click)="changeTab('pending')">
+      <i class="bi bi-hourglass-split"></i> Pending Claims
+    </a>
   </div>
-  
+
+  <!-- Dynamic Claim List -->
+  <app-claim-list
+  [tab]="selectedTab"
+  [searchText]="filterValues.search"
+  [filterStartDate]="filterValues.dateStart"
+  [filterEndDate]="filterValues.dateEnd"
+  [filterMinAmount]="filterValues.amountMin"
+  [filterMaxAmount]="filterValues.amountMax"
+  [filterLocation]="filterValues.location"
+  [sortBy]="filterValues.sortBy">
+</app-claim-list>
+
+  <!-- File a Claim Button -->
   <div class="file-claim-button-container">
-    <button class="file-claim-button" (click)="navigateToClaimPage()" 
-            (mousedown)="isClicked = true" 
-            (mouseup)="isClicked = false" 
+    <button class="file-claim-button"
+            (click)="navigateToClaimPage()"
+            (mousedown)="isClicked = true"
+            (mouseup)="isClicked = false"
             [class.clicked]="isClicked">
       <i class="bi bi-file-earmark-plus"></i> File A Claim
     </button>
   </div>
-  
+
+  <!-- FAQ Section -->
   <div class="faq-section">
     <h2>Frequently Asked Questions</h2>
     <div class="faq-item" *ngFor="let faq of faqs">

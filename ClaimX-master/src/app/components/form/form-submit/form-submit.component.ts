@@ -73,7 +73,7 @@ export class FormSubmitComponent implements OnInit {
         showConfirmButton: false,
         timer: 2000,
         didClose: () => {
-          this.router.navigate(['/another-route']); // Update this with your actual next route
+          this.router.navigate(['/u-dashboard']); // Update this with your actual next route
         }
       });
 

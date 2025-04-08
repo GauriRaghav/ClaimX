@@ -1,16 +1,5 @@
 <div class="container">
-    <h2 class="centered-title">
-        <i 
-          class="bi"
-          [ngClass]="{
-            'bi-check-circle text-green': pageTitle.includes('Approved'),
-            'bi-x-circle text-red': pageTitle.includes('Rejected'),
-            'bi-hourglass-split text-yellow': pageTitle.includes('Pending'),
-            'bi-list text-dark': pageTitle === 'Claim List'
-          }"
-        ></i>
-        {{ pageTitle }}
-      </h2>
+   
     <table class="claim-table">
       <thead>
         <tr>

@@ -45,11 +45,9 @@ export const routes: Routes = [
    {path: 'u-navbar', component:UNavbarComponent},//progress information
    {path: 'a-navbar', component:ANavbarComponent},//Adjuster's Navbar
    { path: 'a-inbox', component: AInboxComponent }, //adjuster's Inbox
-   { 
-      path: 'claim', 
-      children: [
-        { path: 'list', component: ClaimListComponent },         // /claim/list
-        { path: ':status', component: ClaimListComponent }       // /claim/approved, /claim/pending etc.
-      ] 
-    }
+   {
+    path: 'claims/:status',
+    loadComponent: () => import('./components/claim-list/claim-list.component').then(m => m.ClaimListComponent),
+  },
+  { path: '', redirectTo: 'claims/list', pathMatch: 'full' },
 ];

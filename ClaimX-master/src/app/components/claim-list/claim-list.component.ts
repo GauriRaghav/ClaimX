@@ -1,16 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-claim-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule],
   templateUrl: './claim-list.component.html',
   styleUrls: ['./claim-list.component.css']
 })
-export class ClaimListComponent implements OnInit {
+export class ClaimListComponent implements OnChanges {
+  @Input() tab: 'list' | 'approved' | 'rejected' | 'pending' = 'list';
+  @Input() searchText: string = '';
+  @Input() filterStartDate: string = '';
+  @Input() filterEndDate: string = '';
+  @Input() filterMinAmount: number | null = null;
+  @Input() filterMaxAmount: number | null = null;
+  @Input() filterLocation: string = '';
+  @Input() sortBy: 'amount' | 'date' = 'date';
+
   claims = [
     { claimNo: 'CLM001', name: 'John Doe', fileDate: '2024-04-01', amount: 15000, location: 'New York', relation: 'Self', status: 'Approved' },
     { claimNo: 'CLM002', name: 'Jane Smith', fileDate: '2024-03-15', amount: 22000, location: 'California', relation: 'Spouse', status: 'Pending' },
@@ -25,22 +32,70 @@ export class ClaimListComponent implements OnInit {
   ];
 
   filteredClaims: any[] = [];
-  pageTitle = 'Claim List';
 
-  constructor(private route: ActivatedRoute) {}
+  ngOnChanges(): void {
+    this.applyFilters();
+  }
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const status = params.get('status');
-
-      if (status && status !== 'list') {
-        const formattedStatus = status.charAt(0).toUpperCase() + status.slice(1).toLowerCase();
-        this.pageTitle = `${formattedStatus} Claims`;
-        this.filteredClaims = this.claims.filter(claim => claim.status.toLowerCase() === formattedStatus.toLowerCase());
-      } else {
-        this.pageTitle = 'Claim List';
-        this.filteredClaims = [...this.claims];
-      }
-    });
+  applyFilters() {
+    let result = [...this.claims];
+    console.log('Original Claims:', result);
+  
+    // Tab filter
+    if (this.tab !== 'list') {
+      result = result.filter(claim => claim.status.toLowerCase() === this.tab);
+      console.log('After Tab Filter:', result);
+    }
+  
+    // Search filter
+    if (this.searchText.trim()) {
+      const text = this.searchText.toLowerCase();
+      result = result.filter(claim =>
+        claim.name.toLowerCase().includes(text) ||
+        claim.claimNo.toLowerCase().includes(text)
+      );
+      console.log('After Search Filter:', result);
+    }
+  
+    // Date range filter
+    if (this.filterStartDate) {
+      result = result.filter(claim => claim.fileDate >= this.filterStartDate);
+      console.log('After Start Date Filter:', result);
+    }
+    if (this.filterEndDate) {
+      result = result.filter(claim => claim.fileDate <= this.filterEndDate);
+      console.log('After End Date Filter:', result);
+    }
+  
+    // Amount range filter
+    if (this.filterMinAmount !== null && !isNaN(this.filterMinAmount)) {
+      result = result.filter(claim => claim.amount >= this.filterMinAmount!);
+      console.log('After Min Amount Filter:', result);
+    }
+    if (this.filterMaxAmount !== null && !isNaN(this.filterMaxAmount)) {
+      result = result.filter(claim => claim.amount <= this.filterMaxAmount!);
+      console.log('After Max Amount Filter:', result);
+    }
+  
+    // Location filter
+    if (this.filterLocation.trim()) {
+      const loc = this.filterLocation.toLowerCase();
+      result = result.filter(claim => claim.location.toLowerCase().includes(loc));
+      console.log('After Location Filter:', result);
+    }
+  
+    // Sort
+    if (this.sortBy === 'amount') {
+      result.sort((a, b) => b.amount - a.amount);
+      console.log('Sorted by Amount:', result);
+    } else {
+      result.sort((a, b) =>
+        new Date(b.fileDate).getTime() - new Date(a.fileDate).getTime()
+      );
+      console.log('Sorted by Date:', result);
+    }
+  
+    this.filteredClaims = result;
+    console.log('Final Filtered Claims:', this.filteredClaims);
   }
 }

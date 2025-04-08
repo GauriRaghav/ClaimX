@@ -1,19 +1,46 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { ClaimListComponent } from '../claim-list/claim-list.component';
+
+type SortType = 'date' | 'amount';
 
 @Component({
   selector: 'app-u-dashboard',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule, ClaimListComponent],
   templateUrl: './u-dashboard.component.html',
   styleUrls: ['./u-dashboard.component.css']
 })
 export class UDashboardComponent {
   today!: string;
   isClicked: boolean = false;
+  selectedTab: 'list' | 'approved' | 'rejected' | 'pending' = 'list';
+
+  filterValues: {
+    search: string;
+    dateStart: string;
+    dateEnd: string;
+    amountMin: number | null;
+    amountMax: number | null;
+    location: string;
+    sortBy: SortType;
+  } = {
+    search: '',
+    dateStart: '',
+    dateEnd: '',
+    amountMin: null,
+    amountMax: null,
+    location: '',
+    sortBy: 'date'
+  };
+
   constructor(private router: Router) {}
+
+  ngOnInit() {
+    const todayDate = new Date();
+    this.today = todayDate.toISOString().split('T')[0];
+  }
 
   faqs = [
     { question: 'How do I file a claim?', answer: 'You can file a claim by clicking on the "File A Claim" button.', open: false },
@@ -26,22 +53,42 @@ export class UDashboardComponent {
     { question: 'Who can I contact for support?', answer: 'You can contact our support team via email or phone for any assistance.', open: false }
   ];
 
-  ngOnInit() {
-    const todayDate = new Date();
-    this.today = todayDate.toISOString().split('T')[0];
-  }
-
   toggleFaq(faq: any) {
     faq.open = !faq.open;
   }
 
   applyFilters() {
-    // Implement filter logic here
-    console.log('Filters applied');
+    const searchRaw = (document.getElementById('searchClaims') as HTMLInputElement)?.value;
+    const dateStart = (document.getElementById('filterDateStart') as HTMLInputElement)?.value;
+    const dateEnd = (document.getElementById('filterDateEnd') as HTMLInputElement)?.value;
+    const amountMinRaw = (document.getElementById('filterAmountMin') as HTMLInputElement)?.value;
+    const amountMaxRaw = (document.getElementById('filterAmountMax') as HTMLInputElement)?.value;
+    const locationRaw = (document.getElementById('filterLocation') as HTMLInputElement)?.value;
+    const sortBy = (document.getElementById('sortClaims') as HTMLSelectElement)?.value as SortType;
+
+    const search = searchRaw ? searchRaw.trim().toLowerCase() : '';
+    const location = locationRaw ? locationRaw.trim().toLowerCase() : '';
+    const amountMin = amountMinRaw ? parseFloat(amountMinRaw) : null;
+    const amountMax = amountMaxRaw ? parseFloat(amountMaxRaw) : null;
+
+    this.filterValues = {
+      search,
+      dateStart,
+      dateEnd,
+      amountMin: isNaN(amountMin!) ? null : amountMin,
+      amountMax: isNaN(amountMax!) ? null : amountMax,
+      location,
+      sortBy
+    };
+
+    console.log('Filters applied:', this.filterValues);
   }
 
   navigateToClaimPage(): void {
-    this.router.navigate(['/personal-info']); // Replace '/claim-page' with your actual route
+    this.router.navigate(['/personal-info']);
   }
 
+  changeTab(tab: 'list' | 'approved' | 'rejected' | 'pending') {
+    this.selectedTab = tab;
+  }
 }
