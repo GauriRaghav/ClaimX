@@ -1,0 +1,238 @@
+/* Font import */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Jost', sans-serif;
+  background: #f0f2f5;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+  animation: slideInUp 0.7s ease;
+}
+
+/* Search & Filter Section */
+.search-filter-container {
+  margin: 0 0 30px 0;
+}
+
+.search-filter-row,
+.sort-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  flex: 1;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
+}
+
+.filter-button {
+  align-self: flex-end;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.filter-button:hover {
+  background-color: #0056b3;
+}
+
+/* Table */
+.claim-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.claim-table thead {
+  background-color: #f7f9fb;
+}
+
+.claim-table th,
+.claim-table td {
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 15px;
+  color: #333;
+}
+
+.claim-table th {
+  font-weight: 500;
+  color: #555;
+  letter-spacing: 0.5px;
+}
+
+.claim-table tbody tr {
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.claim-table tbody tr:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Status badge */
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.status-badge.approved {
+  background-color: #2ecc71;
+}
+
+.status-badge.pending {
+  background-color: #f1c40f;
+  color: #333;
+}
+
+.status-badge.rejected {
+  background-color: #e74c3c;
+}
+.claim-table-container {
+    overflow-x: auto;
+    margin-top: 1rem;
+  }
+  
+  .claim-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  
+  .claim-table th,
+  .claim-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .claim-table thead th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+  }
+  
+  .status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: white;
+  }
+  
+  .status-badge.approved {
+    background-color: #28a745;
+  }
+  
+  .status-badge.pending {
+    background-color: #ffc107;
+    color: #212529;
+  }
+  
+  .status-badge.rejected {
+    background-color: #dc3545;
+  }
+  
+  .no-data {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+  }
+  .status-dropdown {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    border: none;
+  }
+  
+  .status-dropdown.approved {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .status-dropdown.pending {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .status-dropdown.rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

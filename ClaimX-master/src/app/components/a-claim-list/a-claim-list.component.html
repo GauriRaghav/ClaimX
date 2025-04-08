@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="search-filter-container">
+  
+      <!-- First Row -->
+      <div class="search-filter-row">
+        <div class="form-group">
+          <label>Search</label>
+          <input
+            type="text"
+            placeholder="Search claims..."
+            [(ngModel)]="searchText"
+            (ngModelChange)="applyFilters()" />
+        </div>
+        <div class="form-group">
+          <label>Start Date</label>
+          <input
+            type="date"
+            [(ngModel)]="filterStartDate"
+            (ngModelChange)="applyFilters()" />
+        </div>
+        <div class="form-group">
+          <label>End Date</label>
+          <input
+            type="date"
+            [(ngModel)]="filterEndDate"
+            (ngModelChange)="applyFilters()" />
+        </div>
+        <div class="form-group">
+          <label>Min Amount</label>
+          <input
+            type="number"
+            placeholder="Minimum amount"
+            [(ngModel)]="filterMinAmount"
+            (ngModelChange)="applyFilters()" />
+        </div>
+        <div class="form-group">
+          <label>Max Amount</label>
+          <input
+            type="number"
+            placeholder="Maximum amount"
+            [(ngModel)]="filterMaxAmount"
+            (ngModelChange)="applyFilters()" />
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input
+            type="text"
+            placeholder="Location"
+            [(ngModel)]="filterLocation"
+            (ngModelChange)="applyFilters()" />
+        </div>
+      </div>
+  
+      <!-- Second Row: Sort -->
+      <div class="sort-button-row">
+        <div class="form-group">
+          <label>Sort By</label>
+          <select [(ngModel)]="sortBy" (ngModelChange)="applyFilters()">
+            <option value="amount">Amount</option>
+            <option value="date">Date</option>
+          </select>
+        </div>
+      </div>
+  
+    </div>
+  
+    <!-- Claims Table -->
+    <div class="claim-table-container">
+        <table class="claim-table">
+          <thead>
+            <tr>
+              <th>Claim No</th>
+              <th>Claimant Name</th>
+              <th>File Date</th>
+              <th>Claim Amount</th>
+              <th>Location</th>
+              <th>Relation</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let claim of filteredClaims">
+              <td>{{ claim.claimNo }}</td>
+              <td>{{ claim.name }}</td>
+              <td>{{ claim.fileDate }}</td>
+              <td>{{ claim.amount | currency }}</td>
+              <td>{{ claim.location }}</td>
+              <td>{{ claim.relation }}</td>
+              <td>
+                <select
+                  class="status-dropdown"
+                  [ngClass]="{
+                    'approved': claim.status === 'Approved',
+                    'pending': claim.status === 'Pending',
+                    'rejected': claim.status === 'Rejected'
+                  }"
+                  [value]="claim.status"
+                  (change)="confirmStatusChange($event, claim)"
+                >
+                  <option value="Approved">Approved</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Rejected">Rejected</option>
+                </select>
+              </td>
+            </tr>
+            <tr *ngIf="filteredClaims.length === 0">
+              <td colspan="7" class="no-data">No claims found.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+  </div>
+  

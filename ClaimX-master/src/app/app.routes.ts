@@ -21,6 +21,7 @@ import { UNavbarComponent } from './components/u-navbar/u-navbar.component';
 import { ANavbarComponent } from './components/a-navbar/a-navbar.component';
 import { AInboxComponent } from './components/a-inbox/a-inbox.component';
 import { ClaimListComponent } from './components/claim-list/claim-list.component';
+import { AClaimListComponent } from './components/a-claim-list/a-claim-list.component';
 
 export const routes: Routes = [
 
@@ -50,4 +51,8 @@ export const routes: Routes = [
     loadComponent: () => import('./components/claim-list/claim-list.component').then(m => m.ClaimListComponent),
   },
   { path: '', redirectTo: 'claims/list', pathMatch: 'full' },
+  {
+    path: 'admin/claims',
+    component: AClaimListComponent
+  }
 ];

@@ -1,60 +1,31 @@
 <div class="dashboard">
-    <div class="search-filter-sort">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search claims..." id="searchClaims">
-      </div>
-      <div class="form-group">
-        <label for="filterDateStart">Start Date</label>
-        <input type="date" class="form-control" id="filterDateStart">
-      </div>
-      <div class="form-group">
-        <label for="filterDateEnd">End Date</label>
-        <input type="date" class="form-control" id="filterDateEnd">
-      </div>
-      <div class="form-group">
-        <label for="filterAmountMin">Min Amount</label>
-        <input type="number" class="form-control" id="filterAmountMin" placeholder="Minimum amount">
-      </div>
-      <div class="form-group">
-        <label for="filterAmountMax">Max Amount</label>
-        <input type="number" class="form-control" id="filterAmountMax" placeholder="Maximum amount">
-      </div>
-      <div class="form-group">
-        <label for="filterLocation">Location</label>
-        <input type="text" class="form-control" id="filterLocation" placeholder="Location">
-      </div>
-      <div class="form-group">
-        <label for="sortClaims">Sort By</label>
-        <select class="form-control" id="sortClaims">
-          <option value="amount">Amount</option>
-          <option value="date">Date</option>
-        </select>
+  <div class="claim-cards">
+    <div class="card claim-list-card" [routerLink]="['/admin/claims']" [queryParams]="{ tab: 'list' }">
+      <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-list"></i> Claim List</h5>
+        <p class="card-text">View all claims.</p>
       </div>
     </div>
-    <div class="claim-cards">
-      <div class="card claim-list-card">
-        <div class="card-body">
-          <h5 class="card-title"><i class="bi bi-list"></i> Claim List</h5>
-          <p class="card-text">View all claims.</p>
-        </div>
+
+    <div class="card accepted-claims-card" [routerLink]="['/admin/claims']" [queryParams]="{ tab: 'approved' }">
+      <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-check-circle"></i> Accepted Claims</h5>
+        <p class="card-text">View accepted claims.</p>
       </div>
-      <div class="card accepted-claims-card">
-        <div class="card-body">
-          <h5 class="card-title"><i class="bi bi-check-circle"></i> Accepted Claims</h5>
-          <p class="card-text">View accepted claims.</p>
-        </div>
+    </div>
+
+    <div class="card rejected-claims-card" [routerLink]="['/admin/claims']" [queryParams]="{ tab: 'rejected' }">
+      <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-x-circle"></i> Rejected Claims</h5>
+        <p class="card-text">View rejected claims.</p>
       </div>
-      <div class="card rejected-claims-card">
-        <div class="card-body">
-          <h5 class="card-title"><i class="bi bi-x-circle"></i> Rejected Claims</h5>
-          <p class="card-text">View rejected claims.</p>
-        </div>
-      </div>
-      <div class="card pending-claims-card">
-        <div class="card-body">
-          <h5 class="card-title"><i class="bi bi-hourglass-split"></i> Pending Claims</h5>
-          <p class="card-text">View pending claims.</p>
-        </div>
+    </div>
+
+    <div class="card pending-claims-card" [routerLink]="['/admin/claims']" [queryParams]="{ tab: 'pending' }">
+      <div class="card-body">
+        <h5 class="card-title"><i class="bi bi-hourglass-split"></i> Pending Claims</h5>
+        <p class="card-text">View pending claims.</p>
       </div>
     </div>
   </div>
+</div>
